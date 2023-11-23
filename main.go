@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Ecommerce/components/appctx"
 	_ "Ecommerce/docs"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
@@ -25,6 +26,7 @@ func main() {
 		log.Println("Can not connect to db")
 	}
 	db = db.Debug()
+	appctx := appctx.NewAppContext(db)
 	r := gin.Default()
 	r.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	r.Run(":3007")
