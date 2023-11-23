@@ -6,10 +6,10 @@ import (
 	"net/http"
 )
 
-func RouteConfig(ctx appctx.AppContext, engine gin.Engine) {
+func RouteConfig(ctx appctx.AppContext, engine *gin.Engine) {
 	//user route
 	user := engine.Group("/user")
 	user.GET("/profile", func(context *gin.Context) {
-		context.JSON(http.StatusOK, "this is my prfile")
+		context.JSON(http.StatusOK, "this is my profile")
 	})
 }
